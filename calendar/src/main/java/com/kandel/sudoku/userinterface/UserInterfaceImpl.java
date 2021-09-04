@@ -25,8 +25,8 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
 
     private IUserInterfaceContract.EventListener listener;
 
-    private static final double WINDOW_Y = 732;
     private static final double WINDOW_X = 668;
+    private static final double WINDOW_Y = 732;
     private static final double BOARD_PADDING = 50;
     private static final double BOARD_X_AND_Y = 576;
 
@@ -65,7 +65,7 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
 
         final int xAndYDelta = 64;
 
-        for (int xIndex = 0; xIndex < 9; xIndex++) { // icky O(n)^2 complexity
+        for (int xIndex = 0; xIndex < 9; xIndex++) { // icky O(n^2) complexity
             for (int yIndex = 0; yIndex < 9; yIndex++) {
                 int x = xOrigin + xIndex * xAndYDelta;
                 int y = yOrigin + yIndex * xAndYDelta;
