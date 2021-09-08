@@ -5,11 +5,13 @@ import com.kandel.sudoku.problemdomain.SudokuGame;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.util.HashMap;
@@ -51,12 +53,30 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
     }
 
     private void drawBackground(Group root) {
+        Scene scene = new Scene(root, WINDOW_X, WINDOW_Y);
+        scene.setFill(WINDOW_BACKGROUND_COLOR);
+        stage.setScene(scene);
     }
 
     private void drawTitle(Group root) {
+        Text title = new Text(235, 690, SUDOKU);
+        title.setFill(Color.WHITE);
+        Font titleFont = new Font(43);
+        title.setFont(titleFont);
+        root.getChildren().add(title);
     }
 
     private void drawSudokuBoard(Group root) {
+        Rectangle boardBackground = new Rectangle();
+        boardBackground.setX(BOARD_PADDING);
+        boardBackground.setY(BOARD_PADDING);
+
+        boardBackground.setWidth(BOARD_X_AND_Y);
+        boardBackground.setHeight(BOARD_X_AND_Y);
+
+        boardBackground.setFill(BOARD_BACKGROUND_COLOR);
+
+        root.getChildren().addAll(boardBackground);
     }
 
     private void drawTextFields(Group root) {
@@ -145,12 +165,20 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
 
     @Override
     public void setListener(IUserInterfaceContract.EventListener listener) {
-
+        this.listener = listener;
     }
 
     @Override
     public void updateSquare(int x, int y, int input) {
+        SudokuTextField tile = textFieldCoordinates.get(new Coordinates(x, y));
 
+        String value = Integer.toString(
+                input
+        );
+
+        if (value.equals("0")) value = "";
+
+        tile.textProperty().setValue(value);
     }
 
     @Override
