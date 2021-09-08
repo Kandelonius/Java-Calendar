@@ -1,11 +1,13 @@
 package com.kandel.sudoku.userinterface;
 
+import com.kandel.sudoku.constants.GameState;
 import com.kandel.sudoku.problemdomain.Coordinates;
 import com.kandel.sudoku.problemdomain.SudokuGame;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
@@ -183,7 +185,31 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
 
     @Override
     public void updateBoard(SudokuGame game) {
+        for (int xIndex = 0; xIndex < 9; xIndex++) {
+            for (int yIndex = 0; yIndex < 9; yIndex++) {
+                TextField tile = textFieldCoordinates.get(new Coordinates(xIndex, yIndex));
 
+                String value = Integer.toString(
+                        game.getCopyofGridState()[xIndex][yIndex]
+                );
+
+                if (value.equals("0")) value = "";
+
+                tile.setText(
+                        value
+                );
+
+                if (game.getGameState() == GameState.NEW) {
+                    if (value.equals("")) {
+                        tile.setStyle("-fx-opacity: 1;");
+                        tile.setDisable(false);
+                    } else {
+                        tile.setStyle("-fx-opacity: 0.8;");
+                        tile.setDisable(true);
+                    }
+                }
+            }
+        }
     }
 
     @Override
