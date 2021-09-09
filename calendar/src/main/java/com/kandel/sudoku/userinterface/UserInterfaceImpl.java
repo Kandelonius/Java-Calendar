@@ -37,9 +37,9 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
     private static final double BOARD_PADDING = 50;
     private static final double BOARD_X_AND_Y = 576;
 
-    private static final Color WINDOW_BACKGROUND_COLOR = Color.rgb(0, 150, 135);
-    private static final Color BOARD_BACKGROUND_COLOR = Color.rgb(224, 242, 241);
-    private static final String SUDOKU = "Sudoku";
+    private static final Color WINDOW_BACKGROUND_COLOR = Color.rgb(75,80,115);
+    private static final Color BOARD_BACKGROUND_COLOR = Color.rgb(170,150,190);
+    private static final String GAME_NAME = "Sudoku";
 
     public UserInterfaceImpl(Stage stage, Group root) {
         this.stage = stage;
@@ -64,7 +64,7 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
     }
 
     private void drawTitle(Group root) {
-        Text title = new Text(235, 690, SUDOKU);
+        Text title = new Text(235, 690, GAME_NAME);
         title.setFill(Color.WHITE);
         Font titleFont = new Font(43);
         title.setFont(titleFont);
