@@ -1,5 +1,6 @@
 package com.kandel.sudoku.problemdomain;
 
+import com.kandel.sudoku.computationlogic.SudokuUtilities;
 import com.kandel.sudoku.constants.GameState;
 
 import java.io.Serializable;
