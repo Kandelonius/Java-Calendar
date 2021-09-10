@@ -37,8 +37,8 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
     private static final double BOARD_PADDING = 50;
     private static final double BOARD_X_AND_Y = 576;
 
-    private static final Color WINDOW_BACKGROUND_COLOR = Color.rgb(75,80,115);
-    private static final Color BOARD_BACKGROUND_COLOR = Color.rgb(170,150,190);
+    private static final Color WINDOW_BACKGROUND_COLOR = Color.rgb(75, 80, 115);
+    private static final Color BOARD_BACKGROUND_COLOR = Color.rgb(170, 150, 190);
     private static final String GAME_NAME = "Sudoku";
 
     public UserInterfaceImpl(Stage stage, Group root) {
@@ -99,7 +99,7 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
 
                 styleSudokuTile(tile, x, y);
 
-                tile.setOnKeyPressed(this);
+                tile.setOnKeyPressed(this); // implements event handler
 
                 textFieldCoordinates.put(new Coordinates(xIndex, yIndex), tile);
 
@@ -198,9 +198,7 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
 
                 if (value.equals("0")) value = "";
 
-                tile.setText(
-                        value
-                );
+                tile.setText(value);
 
                 if (game.getGameState() == GameState.NEW) {
                     if (value.equals("")) {
@@ -232,16 +230,16 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
     @Override
     public void handle(KeyEvent event) {
         if (event.getEventType() == KeyEvent.KEY_PRESSED) {
-           if ( event.getText().matches("[0-9]")
-           ) {
-               int value = Integer.parseInt(event.getText());
-               handleInput(value, event.getSource());
-           } else if (event.getCode() == KeyCode.BACK_SPACE) {
-               handleInput(0, event.getSource());
-           } else {
-               ((TextField) event.getSource()).setText("");
-           }
-           event.consume();
+            if (event.getText().matches("[0-9]")
+            ) {
+                int value = Integer.parseInt(event.getText());
+                handleInput(value, event.getSource());
+            } else if (event.getCode() == KeyCode.BACK_SPACE) {
+                handleInput(0, event.getSource());
+            } else {
+                ((TextField) event.getSource()).setText("");
+            }
+            event.consume();
         }
     }
 
