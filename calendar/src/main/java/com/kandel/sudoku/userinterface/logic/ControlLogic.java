@@ -1,5 +1,6 @@
 package com.kandel.sudoku.userinterface.logic;
 
+import com.kandel.sudoku.computationlogic.GameLogic;
 import com.kandel.sudoku.constants.GameState;
 import com.kandel.sudoku.constants.Messages;
 import com.kandel.sudoku.problemdomain.IStorage;
