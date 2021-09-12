@@ -1,5 +1,6 @@
 package com.kandel.sudoku;
 
+import com.kandel.sudoku.buildlogic.SudokuBuildLogic;
 import com.kandel.sudoku.userinterface.IUserInterfaceContract;
 import com.kandel.sudoku.userinterface.UserInterfaceImpl;
 import javafx.application.Application;
