@@ -9,7 +9,7 @@ import java.util.Random;
 import static com.kandel.sudoku.problemdomain.SudokuGame.GRID_BOUNDARY;
 
 public class GameGenerator {
-    public static int[][] getNameGameGrid() {
+    public static int[][] getNewGameGrid() {
         return unsolvedGame(getSolvedGame());
     }
 

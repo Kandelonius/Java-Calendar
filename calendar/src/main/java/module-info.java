@@ -4,7 +4,8 @@ module com.kandel.calendar {
 
 
     opens com.kandel.calendar to javafx.fxml;
-//    exports com.kandel.calendar;
+    exports com.kandel.calendar;
+    exports com.kandel.sudoku;
     exports com.kandel;
     opens com.kandel to javafx.fxml;
 }

@@ -12,10 +12,9 @@ import static com.kandel.sudoku.problemdomain.SudokuGame.GRID_BOUNDARY;
 
 public class GameLogic {
     public static SudokuGame getNewGame() {
-
         return new SudokuGame(
                 GameState.NEW,
-                GameGenerator.getNameGameGrid()
+                GameGenerator.getNewGameGrid()
         );
     }
     public static GameState checkForCompletion(int[][] grid) {
@@ -34,7 +33,7 @@ public class GameLogic {
     private static boolean rowsAreInvalid(int[][] grid) {
         for (int yIndex = 0; yIndex < GRID_BOUNDARY; yIndex++) {
             List<Integer> row = new ArrayList<>();
-            for (int xIndex = 0; yIndex < GRID_BOUNDARY; xIndex++) {
+            for (int xIndex = 0; xIndex < GRID_BOUNDARY; xIndex++) {
                 row.add(grid[xIndex][yIndex]);
             }
             if (collectionHasRepeats(row)) return true;
