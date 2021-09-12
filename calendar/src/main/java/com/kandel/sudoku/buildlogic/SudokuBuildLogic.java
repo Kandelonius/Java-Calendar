@@ -1,6 +1,7 @@
 package com.kandel.sudoku.buildlogic;
 
 import com.kandel.sudoku.computationlogic.GameLogic;
+import com.kandel.sudoku.persistence.LocalStorageImpl;
 import com.kandel.sudoku.problemdomain.IStorage;
 import com.kandel.sudoku.problemdomain.SudokuGame;
 import com.kandel.sudoku.userinterface.IUserInterfaceContract;

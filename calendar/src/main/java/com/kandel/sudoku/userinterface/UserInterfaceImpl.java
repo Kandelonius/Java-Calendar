@@ -34,6 +34,7 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
 
     private static final double WINDOW_X = 668;
     private static final double WINDOW_Y = 732;
+
     private static final double BOARD_PADDING = 50;
     private static final double BOARD_X_AND_Y = 576;
 
@@ -41,7 +42,7 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
     private static final Color BOARD_BACKGROUND_COLOR = Color.rgb(170, 150, 190);
     private static final String GAME_NAME = "Sudoku";
 
-    public UserInterfaceImpl(Stage stage, Group root) {
+    public UserInterfaceImpl(Stage stage) {
         this.stage = stage;
         this.root = new Group();
         this.textFieldCoordinates = new HashMap<>();
