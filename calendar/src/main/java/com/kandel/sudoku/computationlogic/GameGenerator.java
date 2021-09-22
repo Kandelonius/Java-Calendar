@@ -43,7 +43,7 @@ public class GameGenerator {
         return solvableArray;
     }
 
-    private static int [][] getSolvedGame() {
+    private static int[][] getSolvedGame() {
         Random random = new Random(System.currentTimeMillis());
         int[][] newGrid = new int[GRID_BOUNDARY][GRID_BOUNDARY];
 
@@ -81,7 +81,7 @@ public class GameGenerator {
                         newGrid[xCoordinate][yCoordinate] = 0;
                         interrupt++;
                     } else {
-                        allocTracker.add(new Coordinates(xCoordinate,yCoordinate));
+                        allocTracker.add(new Coordinates(xCoordinate, yCoordinate));
                         allocations++;
                     }
                 }

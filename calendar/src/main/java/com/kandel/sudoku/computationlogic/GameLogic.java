@@ -17,6 +17,7 @@ public class GameLogic {
                 GameGenerator.getNewGameGrid()
         );
     }
+
     public static GameState checkForCompletion(int[][] grid) {
         if (sudokuIsInvalid(grid)) return GameState.ACTIVE;
         if (tilesAreNotFilled(grid)) return GameState.ACTIVE;
@@ -60,7 +61,7 @@ public class GameLogic {
     }
 
     private static boolean rowsOfSquaresIsInvalid(Rows value, int[][] grid) {
-        switch(value) {
+        switch (value) {
             case TOP:
                 if (squareIsInvalid(0, 0, grid)) return true;
                 if (squareIsInvalid(0, 3, grid)) return true;
