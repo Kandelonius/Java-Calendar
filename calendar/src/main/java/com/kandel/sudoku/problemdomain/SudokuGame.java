@@ -20,7 +20,7 @@ public class SudokuGame implements Serializable {
         return gameState;
     }
 
-    public int[][] getCopyofGridState() {
+    public int[][] getCopyOfGridState() {
         return SudokuUtilities.copyToNewArray(gridState);
     }
 }

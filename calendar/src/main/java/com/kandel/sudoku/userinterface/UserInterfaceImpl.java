@@ -194,7 +194,7 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
                 TextField tile = textFieldCoordinates.get(new Coordinates(xIndex, yIndex));
 
                 String value = Integer.toString(
-                        game.getCopyofGridState()[xIndex][yIndex]
+                        game.getCopyOfGridState()[xIndex][yIndex]
                 );
 
                 if (value.equals("0")) value = "";

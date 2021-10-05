@@ -23,7 +23,7 @@ public class ControlLogic implements IUserInterfaceContract.EventListener {
     public void onSudokuInput(int x, int y, int input) {
         try {
             SudokuGame gameData = storage.getGameData();
-            int[][] newGridState = gameData.getCopyofGridState();
+            int[][] newGridState = gameData.getCopyOfGridState();
             newGridState[x][y] = input;
 
             gameData = new SudokuGame(
