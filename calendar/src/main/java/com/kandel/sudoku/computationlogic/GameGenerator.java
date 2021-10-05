@@ -19,12 +19,12 @@ public class GameGenerator {
         boolean solvable = false;
         int[][] solvableArray = new int[GRID_BOUNDARY][GRID_BOUNDARY];
 
-        while (solvable == false) {
+        while (!solvable) {
             SudokuUtilities.copySudokuArrayValues(solvedGame, solvableArray);
 
             int index = 0;
 
-            while (index < 40) {
+            while (index < 25) {
                 int xCoordinate = random.nextInt(GRID_BOUNDARY);
                 int yCoordinate = random.nextInt(GRID_BOUNDARY);
 
@@ -33,13 +33,11 @@ public class GameGenerator {
                     index++;
                 }
             }
-
             int[][] toBeSolved = new int[GRID_BOUNDARY][GRID_BOUNDARY];
             SudokuUtilities.copySudokuArrayValues(solvableArray, toBeSolved);
 
             solvable = SudokuSolver.puzzleIsSolvable(toBeSolved);
         }
-
         return solvableArray;
     }
 
@@ -87,14 +85,14 @@ public class GameGenerator {
                 }
             }
         }
-
         return newGrid;
     }
 
     private static void clearArray(int[][] newGrid) {
-        for (int xIndex = 0; xIndex < GRID_BOUNDARY; xIndex++)
+        for (int xIndex = 0; xIndex < GRID_BOUNDARY; xIndex++) {
             for (int yIndex = 0; yIndex < GRID_BOUNDARY; yIndex++) {
                 newGrid[xIndex][yIndex] = 0;
             }
+        }
     }
 }

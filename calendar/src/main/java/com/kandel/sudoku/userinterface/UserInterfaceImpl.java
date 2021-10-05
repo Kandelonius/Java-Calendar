@@ -18,7 +18,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import java.util.HashMap;
 
 public class UserInterfaceImpl implements IUserInterfaceContract.View,
@@ -32,8 +31,8 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
 
     private IUserInterfaceContract.EventListener listener;
 
-    private static final double WINDOW_X = 668;
-    private static final double WINDOW_Y = 732;
+    private static final double WINDOW_X = 700;
+    private static final double WINDOW_Y = 700;
 
     private static final double BOARD_PADDING = 50;
     private static final double BOARD_X_AND_Y = 576;
@@ -231,7 +230,7 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
     @Override
     public void handle(KeyEvent event) {
         if (event.getEventType() == KeyEvent.KEY_PRESSED) {
-            if (event.getText().matches("[0-9]")
+            if (event.getText().matches("[1-9]")
             ) {
                 int value = Integer.parseInt(event.getText());
                 handleInput(value, event.getSource());
