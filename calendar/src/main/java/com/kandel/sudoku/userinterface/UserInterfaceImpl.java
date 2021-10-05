@@ -31,11 +31,11 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
 
     private IUserInterfaceContract.EventListener listener;
 
-    private static final double WINDOW_X = 700;
-    private static final double WINDOW_Y = 700;
+    private static final double WINDOW_X = 670;
+    private static final double WINDOW_Y = 730;
 
     private static final double BOARD_PADDING = 50;
-    private static final double BOARD_X_AND_Y = 576;
+    private static final double BOARD_X_AND_Y = 575;
 
     private static final Color WINDOW_BACKGROUND_COLOR = Color.rgb(75, 80, 115);
     private static final Color BOARD_BACKGROUND_COLOR = Color.rgb(170, 150, 190);
@@ -64,7 +64,7 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
     }
 
     private void drawTitle(Group root) {
-        Text title = new Text(235, 690, GAME_NAME);
+        Text title = new Text(235, 50, GAME_NAME);
         title.setFill(Color.WHITE);
         Font titleFont = new Font(43);
         title.setFont(titleFont);
@@ -123,7 +123,7 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
     }
 
     private void drawGridLines(Group root) {
-        int xAndY = 114;
+        int xAndY = 114; // where the gridlines are started
         int index = 0;
         while (index < 8) {
             int thickness;
@@ -150,7 +150,6 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
                     verticalLine,
                     horizontalLine
             );
-
             index++;
         }
     }
@@ -164,6 +163,7 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
         line.setY(y);
         line.setHeight(height);
         line.setWidth(width);
+        line.setFill(Color.BLACK);
 
         return line;
     }
@@ -177,11 +177,9 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
     public void updateSquare(int x, int y, int input) {
         SudokuTextField tile = textFieldCoordinates.get(new Coordinates(x, y));
 
-        String value = Integer.toString(
-                input
-        );
+        String value = Integer.toString(input);
 
-        if (value.equals("0")) value = "";
+        if (value.equals("0")) value = ""; // this is fine for a quick if statement
 
         tile.textProperty().setValue(value);
     }
@@ -200,12 +198,13 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
 
                 tile.setText(value);
 
+                // On new game set higher opacity for unfilled tiles and allow editing
                 if (game.getGameState() == GameState.NEW) {
                     if (value.equals("")) {
                         tile.setStyle("-fx-opacity: 1;");
                         tile.setDisable(false);
-                    } else {
-                        tile.setStyle("-fx-opacity: 0.8;");
+                    } else { // otherwise don't allow the tile to be edited
+                        tile.setStyle("-fx-opacity: 0.7;");
                         tile.setDisable(true);
                     }
                 }
@@ -230,8 +229,7 @@ public class UserInterfaceImpl implements IUserInterfaceContract.View,
     @Override
     public void handle(KeyEvent event) {
         if (event.getEventType() == KeyEvent.KEY_PRESSED) {
-            if (event.getText().matches("[1-9]")
-            ) {
+            if (event.getText().matches("[0-9]")) {
                 int value = Integer.parseInt(event.getText());
                 handleInput(value, event.getSource());
             } else if (event.getCode() == KeyCode.BACK_SPACE) {
