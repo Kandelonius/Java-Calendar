@@ -47,9 +47,7 @@ public class ControlLogic implements IUserInterfaceContract.EventListener {
     @Override
     public void onDialogClick() {
         try {
-            storage.updateGameData(
-                    GameLogic.getNewGame()
-            );
+            storage.updateGameData(GameLogic.getNewGame());
         } catch (IOException e) {
             view.showError(Messages.ERROR);
         }
